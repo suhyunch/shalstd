@@ -7,6 +7,7 @@ int M, N;
 void fill(int i, int j, char org_color, char color)
 {
     map[i][j] = color;
+    
 
     if (i>1 && map[i - 1][j] == org_color)
         fill(i - 1, j, org_color, color);
