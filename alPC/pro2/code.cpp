@@ -6,7 +6,7 @@ int main()
 	int N, M, cnt = 0;//N행의 갯수, M열의 갯수;
 	int Fcnt = 0;
 	char map[102][102] = { 0 };
-	fp = fopen("D:\atom_coding\al_pc\pro2\input.txt", "r");
+	fp = fopen("D:\\atom_coding\\al_pc\\pro2\\input.txt", "r");
 	fscanf(fp, "%d %d", &N, &M);
 
 	while (!((N == 0) && (M == 0)))
