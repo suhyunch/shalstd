@@ -7,7 +7,7 @@ int N, K;
 int bfs(void)
 {
     queue< pair<int, int> >  q;
-    bool visit[100000]={0};
+    bool visit[100001]={0};
     q.push({N,0});
     while(!q.empty())
     {
