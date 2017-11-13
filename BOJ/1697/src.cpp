@@ -1,44 +1,34 @@
-#include <iostream>
+#include <cstdio>
 #include <queue>
+#include <utility>
 using namespace std;
-int N, K, t;
-bool visit[100000];
+int N, K;
 
-void bfs(int x)
+int bfs(void)
 {
-    queue<int> q;
-    q.push(x);
+    queue< pair<int, int> >  q;
+    bool visit[100000]={0};
+    q.push({N,0});
     while(!q.empty())
     {
-        x = q.front();
-        visit[x]=1;
-        cout << x << endl;
+        int x = q.front().first;
+        int t = q.front().second;
         q.pop();
-        t++;
-        if(x==K) break;
+
+        if(x<0 || x>100000) continue;
         if(visit[x]) continue;
-        if(x-1>=0 && x+1<=100000 && x*2 <=100000)
-        {
-            if(!visit[x-1]) q.push(x-1);
-            if(!visit[x+1]) q.push(x+1);
-            if(!visit[2*x]) q.push(x*2);
-        }
-        else if(x==0) if(!visit[x+1]) q.push(x+1);
-        else if(x*2>100000 && x+1<=100000)
-        {
-            if(!visit[x-1]) q.push(x-1);
-            if(!visit[x+1]) q.push(x+1);
-        }
-        else if(x==100000) if(!visit[x-1]) q.push(x-1);
 
-    }
+         visit[x]=1;
+        if(x==K) return t;
 
+        q.push({x*2,t+1});
+        q.push({x+1,t+1});
+        q.push({x-1,t+1});
+        }
 }
+
 int main()
 {
-
-    cin >> N >> K;
-
-    bfs(N);
-    cout << t;
+    scanf("%d %d", &N, &K);
+    printf("%d", bfs());
 }
