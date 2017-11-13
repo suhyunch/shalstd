@@ -31,4 +31,5 @@ int main()
 {
     scanf("%d %d", &N, &K);
     printf("%d", bfs());
+    return 0;
 }
