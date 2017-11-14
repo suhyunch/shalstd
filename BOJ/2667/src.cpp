@@ -41,7 +41,7 @@ int main()
       if(!visit[i][j]&& map[i][j])
       {  visit[i][j]=1; cnt_d=1;  dfs(i,j); num[cnt]=cnt_d; cnt++;  }
 
-  sort(num,num+cnt);
+  sort(num,num+cnt); // 0부터 cnt개의 단지 개수만큼 sort
   cout << cnt << endl;
   for(int i=0; i<cnt; i++) cout << num[i] << endl;
 }
