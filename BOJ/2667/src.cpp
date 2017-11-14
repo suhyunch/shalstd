@@ -1,9 +1,9 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;;
-bool map[28][28];
-bool visit[28][28];
-int num[320];
+bool map[27][27];
+bool visit[27][27];
+int num[313];
 int cnt_d;
 int cnt;
 int dx[4]={1,-1,0,0};
@@ -41,7 +41,7 @@ int main()
       if(!visit[i][j]&& map[i][j])
       {  visit[i][j]=1; cnt_d=1;  dfs(i,j); num[cnt]=cnt_d; cnt++;  }
 
-  sort(num,num+cnt); // 0부터 cnt개의 단지 개수만큼 sort
+  sort(num,num+cnt);
   cout << cnt << endl;
   for(int i=0; i<cnt; i++) cout << num[i] << endl;
 }
