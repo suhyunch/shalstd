@@ -19,7 +19,7 @@ void dfs(int y, int x)
 		int nx=x+dx[i];
 		int ny=y+dy[i];
 
-		if(ny>=0 && ny<M && nx>=0 && nx< N && map[ny][nx] && !visit[ny][nx])
+		if(ny>=0 && ny<M && nx>=0 && nx< N && !map[ny][nx] && !visit[ny][nx])
 		{
 			visit[ny][nx]=1;
 			dfs(ny, nx);
@@ -29,9 +29,6 @@ void dfs(int y, int x)
 
 int main()
 {
-	/*initialize*/
-	for(int i=0; i<100; i++) for(int j=0; j<100; j++) map[i][j]=1;
-
 	cin >> M >> N >> K;
 
 	/*input*/
@@ -43,13 +40,13 @@ int main()
 		for (int j = y1; j < y2; j++)
 			{
 				for (int k = x1; k < x2; k++)
-				map[j][k] = 0;
+				map[j][k] = 1;
 			}
 	}
 
 	for(int i=0; i<M; i++)
 		for(int j=0; j<N; j++)
-			if(map[i][j] && !visit[i][j])
+			if(!map[i][j] && !visit[i][j])
 			{
 				nv=0;
 				visit[i][j]=1;
