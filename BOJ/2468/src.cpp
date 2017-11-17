@@ -37,7 +37,7 @@ int main()
      if(m_height<map[i][j]) m_height=map[i][j];
    }
 
-   for(int i=2; i<=m_height; i++)
+   for(int i=1; i<=m_height; i++) 
    {
      int tmp_area=0;
      /*initialize*/
