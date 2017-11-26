@@ -9,12 +9,13 @@ int main()
   int N;
   cin >> N >> str1;
   int l=str1.size();
-  bool chk[51]={1,};
+  bool chk[51];
+  for(int j=0; j<l; j++) chk[j]=1;
   if(N==1) {cout << str1; return 0;}
   for(int i=1; i<N; i++)
   {
     cin >> str2;
-    for(int j=0; j<=l; j++)
+    for(int j=0; j<l; j++)
       if(str1[j]!=str2[j])   chk[j]=0;
     str1=str2;
   }
