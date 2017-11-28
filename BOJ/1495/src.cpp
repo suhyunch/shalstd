@@ -32,16 +32,6 @@ int main()
       if(a==x){ cout << "-1"; return 0;}
     }
   }
-  cout << "x  " ;
-  for(int j=0; j <=M; j++) cout <<j <<"  ";
-  cout << endl;
-  for(int i=0; i<=N; i++)
-  { cout << i << "  " ;
-    for(int j=0; j <=M; j++)
-    cout << dp[i][j] << "  ";
-    cout << endl;
-  }
-  cout << "  DP " << endl;
   int max=-1;
   for(int j=0; j<=M; j++)
   {
