@@ -16,7 +16,6 @@ int main()
     else if(num[i]=='Z' ) x= 10;
     else if((int)num[i]>='S')  x= (num[i]-'A'-1)/3+3;
     else x= (num[i]-'A')/3+3;
-    cout << num[i] << "  " << x  << endl;
     sum+=x;
   }
   cout << sum;
