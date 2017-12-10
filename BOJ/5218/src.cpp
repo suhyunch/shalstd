@@ -17,7 +17,7 @@ int main()
           int l=s1.size();
           for(int j=0;j<l; j++)
           {
-               if((int)s1[j]>(int)s2[j]) cout << s2[j]-s1[j] +26  << "  ";
+               if((int)s1[j]>(int)s2[j]) cout << s2[j]-s1[j] +26  << " ";
                else cout << s2[j]-s1[j] << " ";
           }
           cout << endl;
