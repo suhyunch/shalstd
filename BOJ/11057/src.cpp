@@ -16,8 +16,8 @@ int main()
           dp[0][i]=1;
           for(int j=1; j<10; j++)
           {
-               dp[j][i]=dp[j-1][i]+dp[j][i-1];
-               if(i==n) sum+=dp[j][i];
+               dp[j][i]=(dp[j-1][i]+dp[j][i-1])%10007;
+               if(i==n) sum=(sum+dp[j][i])%10007;
           }
      }
      cout << sum%10007;
