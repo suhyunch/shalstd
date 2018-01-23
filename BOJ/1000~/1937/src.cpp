@@ -1,50 +1,48 @@
 //https://www.acmicpc.net/problem/1937
 #include <iostream>
+#include <stdio.h>
 using namespace std;
-
-int map[501][501];
-int longest[501][501];
-bool visit[501][501];
-int dx[4]={0,0,1,-1};
-int dy[4]={1,-1,0,0};
-int max_l;
-
-void dfs(int y, int x, int depth)
+long map[502][502];
+int dp[502][502];
+int dy[4] = {1,0,-1,0};
+int dx[4] = {0,1,0,-1};
+  int n;
+int max1;
+int mov(int nowy, int nowx)
 {
-  visit[y][x]=1;
-  if(max_l<depth) max_l=depth;
-  for(int i=0; i<4; i++)
-  {
-    int ny=y+dy[i];
-    int nx=x+dx[i];
-    if(map[y][x]<map[ny][nx] && longest[ny][nx] !=0) {max_l=depth+longest[ny][nx];}
-    if(map[ny][nx]!=0 && !visit[ny][nx]  && map[y][x]<map[ny][nx])
-      dfs(ny,nx,depth+1);
-  }
-  visit[y][x]=0;
+     int nexty, nextx;
+     for(int i=0; i<4; i++)
+     {
+          nexty=nowy+dy[i];
+          nextx=nowx+dx[i];
+
+          if((map[nexty][nextx]>map[nowy][nowx]) && (dp[nexty][nextx]<dp[nowy][nowx]+1))
+          {
+                    dp[nexty][nextx]=dp[nowy][nowx]+1;
+                    if(dp[nexty][nextx]>max1) max1=dp[nexty][nextx];
+                    mov(nexty, nextx);
+          }
+     }
 }
 
 int main()
 {
-  int n;
-  cin >> n;
+  scanf("%d", &n);
 
-  for(int i=1; i<=n; i++)
+ for(int i=1; i<=n; i++)
     for(int j=1; j<=n; j++)
-     cin >> map[i][j];
+     scanf("%d", &map[i][j]);
 
-  for(int i=1; i<=n; i++)
-   for(int j=1; j<=n; j++)
-   {
-     max_l=0;
-     dfs(i,j,1);
-     longest[i][j]=max_l;
-  }
 
- max_l=0;
-  for(int i=1; i<=n; i++)
-   for(int j=1; j<=n; j++)
-   if(longest[i][j]>max_l) max_l=longest[i][j];
+     for(int i=1; i<=n; i++)
+       for(int j=1; j<=n; j++)
+       {
+            if(dp[i][j]==0) // 탐색한 적이 없으면
+            {
+                 dp[i][j]=1;
+                 if(max1 !=n*n) mov(i,j);
+            }
+       }
 
-   cout << max_l;
+       printf("%d",max1);
 }
