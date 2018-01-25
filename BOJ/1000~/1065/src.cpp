@@ -17,6 +17,14 @@ int main()
                if(now%10-(now%100)/10 != diff) {cnt--; break;}
                now/=10;
           }
+          /*********
+          while(now>0)
+          {
+               if(now%10-(now%100)/10 != diff) {cnt--; break;}
+               now/=10;
+               if(now<10) break;
+          }
+          *************/
       }
      cout << cnt;
 }
