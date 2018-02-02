@@ -5,7 +5,6 @@ using namespace std;
 bool map[100][100];
 int visited[100][100];
 int visited2[100][100];
-bool visitl[10001];
 int N, cnt;
 int min1=10001;
 
