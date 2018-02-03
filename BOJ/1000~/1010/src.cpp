@@ -18,8 +18,6 @@ int main(){
                     if(dp[i][j]) continue;
                     for(int k=j; k>=i; k--)
                     dp[i][j]+=dp[i-1][k-1];
-
-                    cout <<"i : " <<i <<", j : " << j<< " -- "  <<dp[i][j] << endl;
                }
           }
 
