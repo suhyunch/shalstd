@@ -89,14 +89,7 @@ void bfs(){
                     }
                }
           }
-          tmp2=cnt2;/*
-cout << endl;
-          for(int i=0; i<R; i++){
-               for(int j=0; j<C; j++){cout << map[i][j];
-
-               }
-               cout << endl;
-          }*/
+          tmp2=cnt2;
      }
 }
 
