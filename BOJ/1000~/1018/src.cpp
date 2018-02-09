@@ -29,28 +29,12 @@ int painting_white_fst(int y, int x){
      return cnt;
 }
 
-int painting_black_fst(int y, int x){
-     int cnt=0;
-     for(int i=y; i<y+8; i++){
-          for(int j=x; j<x+8; j++){
-               if((y%2)==(i%2)){
-                    if((x%2)==(j%2)){ if(map[i][j]=='W') cnt++;}
-                    else { if(map[i][j]=='B') cnt++;}
-               }
-               else {
-                    if((x%2)==(j%2)){ if(map[i][j]=='B') cnt++;}
-                    else { if(map[i][j]=='W') cnt++;}
-               }
-          }
-     }
-     return cnt;
-}
-
 int find(){
      int ans=66;
      for(int i=0; i<=N-8; i++){
           for(int j=0; j<=M-8; j++){
-               mn=min(painting_white_fst(i,j),painting_black_fst(i,j));
+               int tmp=painting_white_fst(i,j);
+               mn=min(tmp,64-tmp);
                ans=min(ans,mn);
           }
      }
