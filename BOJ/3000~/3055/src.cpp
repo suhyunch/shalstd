@@ -6,7 +6,7 @@ using namespace std;
 char map[52][52];
 int visited[52][52];
 int R, C;
-int sy1, sx1, desy, desx, sy2, sx2;
+int sy1, sx1, desy, desx;
 bool wchk;
 int cnt;
 int dy[4]={0,0,1,-1};
@@ -44,11 +44,11 @@ void bfs(){
      queue< pair<int, int> > q;
      q.push(make_pair(sy1,sx1));
      int cnt2=0;
-     int tmp=1;
+     int tmp=cnt;
      int tmp2=1;
      int y,x;
      visited[sy1][sx1]=1;
-
+cnt=0;
      while(!q.empty()){
           while(tmp-->0 && wchk){
                int wy=water.front().first;
@@ -68,6 +68,7 @@ void bfs(){
                     }
                }
           }
+          
           tmp=cnt;
           cnt=0;
           cnt2=0;
@@ -84,7 +85,6 @@ void bfs(){
                               q.push(make_pair(ny,nx));
                               cnt2++;
                               visited[ny][nx]=visited[y][x]+1;
-                              map[ny][nx]='0';
                          }
                     }
                }
