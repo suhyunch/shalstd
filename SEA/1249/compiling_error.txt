@@ -1,0 +1,4 @@
+D:\std\SEA\1249\src.cpp: In function 'void dfs(int, int)':
+D:\std\SEA\1249\src.cpp:34:59: error: invalid operands of types 'void' and 'int' to binary 'operator+'
+                dp[y][x]=min(dp[y][x], dfs(ny,nx)+dp[ny][nx]);
+                                                           ^
