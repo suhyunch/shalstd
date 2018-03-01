@@ -6,7 +6,7 @@ using namespace std;
 void process(int n){
      int ans=1;
      int tmp[5000];
-     memset(tmp, 0, sizeof(tmp));
+     memset(tmp, 0, sizeof(int)*5000);
      tmp[0]=1;
      int index=1;
      for(int i=2; i<=n/2; i++){
