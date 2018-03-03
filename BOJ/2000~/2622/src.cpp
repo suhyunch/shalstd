@@ -13,7 +13,6 @@ int main(){
                int c=n-(a+b);
                if(c<b) break;
                if(c<a+b) cnt++;
-               }
           }
      }
      cout << cnt;
