@@ -3,8 +3,6 @@ using namespace std;
 int N,M,C;
 int honey[10][10];
 int profit[10][10];
-bool visited[10];
-//int mx,
 int mx2;
 void init(){
      for(int i=0; i<10; i++){
@@ -17,11 +15,11 @@ void init(){
 }
 
 void input(){
-     cin >> N >> M >> C;
+     scanf("%d %d %d", &N, &M , &C);
 
      for(int i=0; i<N; i++){
           for(int j=0; j<N; j++){
-               cin >> honey[i][j];
+               scanf("%d",honey[i]+j);
           }
      }
      return;
@@ -56,7 +54,7 @@ void find(int y, int x){
 
 int main(){
      int tc;
-     cin >>tc;
+     scanf("%d",&tc);
 
      for(int T=1; T<=tc; T++){
           init();
@@ -69,18 +67,12 @@ int main(){
                }
           }
 
-          cout <<endl;
-          for(int i=0; i<N; i++){
-               for(int j=0; j<N; j++){
-                    cout << profit[i][j] <<" ";
-               }cout << endl;
-          }
           for(int i=0; i<N; i++){
                for(int j=0; j<N; j++){
                     find(i,j);
                }
           }
 
-          cout << "#" << T << " " << mx2 <<endl;
+          printf("#%d %d\n", T, mx2);
      }
 }
