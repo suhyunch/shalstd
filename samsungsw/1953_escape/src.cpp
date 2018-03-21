@@ -16,7 +16,6 @@ int main(){
 
      for(int T=1; T<=tc; T++){
           input();
-          cout << endl;
           printf("#%d %d\n",T,solve(R, C));
      }
 }
@@ -42,7 +41,6 @@ int solve(int y, int x){
      int cnt2=0;
      for(int i=1;i<L; i++){
           while(cnt0-->0){
-               cout << i << " :: " << cnt0 <<endl;
                int nowy=s.front().first;
                int nowx=s.front().second;
                s.pop();
@@ -144,26 +142,16 @@ int solve(int y, int x){
                          }
                          if(map[nowy+dy[3]][nowx+dx[3]]>0 && IsPossible(3, nowy, nowx)){
                               if(!visited[nowy+dy[3]][nowx+dx[3]]) {
-                                   cout << "i dont know  " << nowy+dy[3] << " , " <<nowx+dx[3] <<endl;
                                    s.push(make_pair(nowy+dy[3], nowx+dx[3]));
                                    cnt2++;
                               }
-                              cout << "i dont know2  " << nowy+dy[3] << " , " <<nowx+dx[3] <<endl;
                               visited[nowy+dy[3]][nowx+dx[3]]=true;
                          }
                     }
                     break;
                }
-               for(int i=0; i<N; i++){
-                    for(int j=0; j<M; j++){
-                         cout << visited[i][j] <<" ";
-                    }cout <<endl;
-               }
-               cout << cnt2 << endl;
-
           }
           cnt0=cnt2;
-          cout << cnt2 << endl;
           cnt2=0;
 
      }
