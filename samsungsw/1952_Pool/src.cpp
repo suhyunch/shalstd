@@ -4,7 +4,7 @@ int use[13];
 int cost[4];
 int mn;
 void input();
-void solve();
+void solve(int depth, int tcost);
 
 int main(){
      int tc;
@@ -14,8 +14,7 @@ int main(){
           input();
           mn=cost[3];
 
-          solve(1, cost[0]*use[1]);
-          solve(1, cost[1]);
+          cost[0]*use[1]<cost[1] ? solve(1, cost[0]*use[1]) : solve(1, cost[1]);
           solve(3, cost[2]);
 
           printf("#%d %d\n", T, mn);
@@ -36,7 +35,6 @@ void solve(int depth, int tcost){
           if(mn>tcost) mn=tcost;
           return;
      }
-     solve(depth+1, tcost+cost[0]*use[depth+1]);
-     solve(depth+1, tcost+cost[1]);
-     solve(dpeth+3, tcost+cost[2]);
+     tcost+cost[0]*use[depth+1]<tcost+cost[1] ? solve(depth+1, tcost+cost[0]*use[depth+1]) : solve(depth+1, tcost+cost[1]);
+     solve(depth+3, tcost+cost[2]);
 }
