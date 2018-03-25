@@ -50,6 +50,10 @@ void input(){
      return;
 }
 void dfs(int depth, int cnt){
+     if(cnt==N/2){
+          solve();
+          return;
+     }
      if(cnt>N/2) return;
      if(depth==N){
           if(cnt!=N/2) return;
@@ -74,7 +78,7 @@ void solve(){
                }
           }
           else{ // 식재료 i가 A요리사
-               for(int j=i; j<N; j++){
+               for(int j=i+1; j<N; j++){
                     if(!match[j]){
                          A+=ingredient[i][j];
                     }
