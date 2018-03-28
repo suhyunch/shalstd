@@ -1,4 +1,3 @@
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 // 기본 제공코드는 임의 수정해도 관계 없습니다. 단, 입출력 포맷 주의
 // 아래 표준 입출력 예제 필요시 참고하세요.
@@ -52,8 +51,6 @@ int main(int argc, char** argv)
 		input();
           //하나의 자석이 1 칸 회전될 때, 붙어 있는 자석은
           //서로 붙어 있는 날의 자성과 다를 경우에만 인력에 의해 반대 방향으로 1 칸 회전된다.
-          for(int i=0; i<4; i++) cout << idx[i];
-          cout << endl;
           solve();
           int score=0;
 
@@ -80,39 +77,29 @@ void input(){
 void solve(){
 
      while(K-->0){
-          cout << K << " :: "<<endl;
           int dir, sel;
           int idx_tmp[4];
           cin >> sel >> dir;
           //dir 1은 시계, -1은 반시계
           int dir_tmp=dir;
           //선택한 자석의 오른쪽 회전
-          cout << idx[sel-1] << " ?? " << dir << endl;
           bool chk=0;
           if(dir==1)
                idx_tmp[sel-1]= idx[sel-1]==0 ? 7 : idx[sel-1]-1;
           else
                idx_tmp[sel-1]= idx[sel-1]==7 ? 0 : idx[sel-1]+1;
           for(int i=sel-1; i<3; i++){
-               cout << "i ------ " << i << endl;
                if(chk){
                     idx_tmp[i+1]=idx[i+1];
                     continue;
                }
-               cout << idx[3] << endl;
                //magnet[i][2]와 magnet[i+1][6]확인
-               cout << endl << " ------ " << idx[i] << ", " << idx[i+1] << endl;
                int l=idx[i]+2 > 7 ?  idx[i]-6: idx[i]+2;
                int r=idx[i+1]+6 > 7 ?  idx[i+1]-2: idx[i+1]+6;
-               cout << "l " << l << " , " << "r " << r <<endl;
-               cout<< magnet[i][l] << " && " << magnet[i+1][r] <<endl;
                if(magnet[i][l]!=magnet[i+1][r]){
                     if(dir_tmp==-1) {
-                         cout << "now~~" << endl;
                          dir_tmp=1;
                          idx_tmp[i+1]= idx[i+1]==0 ? 7 : idx[i+1]-1;
-                         cout << i+1<< "  :: " << magnet[i][l] << " && "<< magnet[i+1][r] <<endl;
-                         cout << idx[i+1] << " " << idx_tmp[i+1] << endl;
                     }
                     else {
                          dir_tmp=-1;
@@ -120,30 +107,21 @@ void solve(){
                     }
                }
                else {
-                    cout << "esle " << i <<endl;
                     chk=1;
                     idx_tmp[i+1]=idx[i+1];
                }
           }
-
-          for(int i=0; i<4; i++){
-               cout << idx_tmp[i] << " ";
-          }cout << endl;
           //선택한 자석의 왼쪽 회전
           dir_tmp=dir;
           chk=0;
           for(int i=sel-1; i>0; i--){
-               cout << "i ------ " << i << endl;
                if(chk){
                     idx_tmp[i-1]=idx[i-1];
-                    cout << i-1 << " -- " << idx_tmp[i-1] << endl;
                     continue;
                }
                //magnet[i][6]와 magnet[i-1][2]확인
                int l=idx[i-1]+2 > 7 ?  idx[i-1]-6: idx[i-1]+2;
                int r=idx[i]+6 > 7 ?  idx[i]-2: idx[i]+6;
-               cout << "l " << l << " , " << "r " << r <<endl;
-               cout<< magnet[i-1][l] << " && " << magnet[i][r] <<endl;
                if(magnet[i-1][l]!=magnet[i][r]){
                     if(dir_tmp==-1) {
                          dir_tmp=1;
@@ -155,18 +133,13 @@ void solve(){
                     }
                }
                else {
-                    cout << "esle " << i <<endl;
                     chk=1;
                     idx_tmp[i-1]=idx[i-1];
-                    cout << i-1<< " ==  " << idx_tmp[i-1] << endl;
                }
           }
-          cout <<endl<< "now finally " << endl;
           for(int i=0; i<4; i++){
                idx[i]=idx_tmp[i];
-
-               cout << idx[i] << " ";
-          }cout << endl << endl;
+          }
      }
      return;
 }
