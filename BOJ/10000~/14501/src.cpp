@@ -7,8 +7,10 @@ int N;
 
 int counsel[16][2];
 int dp[16];
+
 void input();
 void solve(int today, int earn);
+
 int main(){
 
      cin >> N;
