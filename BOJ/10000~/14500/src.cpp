@@ -13,13 +13,7 @@ int mx=0;
 
 void solve(int y, int x, int now);
 void dfs(int y, int x, int now, int depth);
-/*
-void init(int y, int x){
-     for(int i=y-1; i<=y+1; i++){
-          for(int j=x-1; j<=x+1; j++)
-               visited[i][j]=0;
-     }
-}*/
+
 int main(){
       cin >> N >> M;
 
