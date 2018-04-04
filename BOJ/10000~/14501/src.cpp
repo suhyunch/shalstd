@@ -7,10 +7,8 @@ int N;
 
 int counsel[16][2];
 int dp[16];
-
 void input();
 void solve(int today, int earn);
-
 int main(){
 
      cin >> N;
@@ -36,8 +34,6 @@ void solve(int today, int earn){
           return;
      }
 
-     if(today+counsel[today+1][0]<=N){
-          solve(today+counsel[today+1][0], earn+counsel[today+1][1]);
-     }
+     solve(today+counsel[today+1][0], earn+counsel[today+1][1]);
      solve(today+1, earn);
 }
