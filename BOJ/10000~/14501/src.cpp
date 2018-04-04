@@ -4,7 +4,6 @@
 using namespace std;
 
 int N;
-int mx;
 
 int counsel[16][2];
 int dp[16];
@@ -18,10 +17,7 @@ int main(){
 
      solve(counsel[1][0], counsel[1][1]);
      solve(1, 0);
-     for(int i=1; i<=N; i++){
-          if(dp[i]>mx) mx=dp[i];
-     }
-     cout << mx;
+     cout << dp[N];
      return 0;
 }
 
