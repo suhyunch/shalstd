@@ -7,8 +7,7 @@ using namespace std;
 #define south 4
 
 int map[20][20];
-class dice{
-public:
+struct dice{
      int U;//up
      int B;//bottom
      int E;//east
