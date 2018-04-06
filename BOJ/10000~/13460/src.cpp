@@ -22,7 +22,7 @@ int mn=11;
 ball R;
 ball B;
 int chk;
-//bool chk_10=1;
+
 //map input
 void input(){
      cin >> N >> M;
