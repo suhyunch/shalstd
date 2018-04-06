@@ -1,67 +1,66 @@
 //https://www.acmicpc.net/problem/14889
 #include <iostream>
+#include <algorithm>
 using namespace std;
-int S[21][21];
-int combinations[10];
-int combinationl[10];
-bool visit[11];
+int abs(int a, int b) { return (a-b)>(b-a)? (a-b):(b-a); }
+
+int s[21][21];
+bool start[20];
+int ss;//start score
+int ls;//link score
 int n;
+int mn=1e9;
 
-int dfs(int start, int cnt)
+void dfs(int idx, int depth);
+int main()
 {
-     combinations[cnt]=start;
-     visit[start]=1;
-
-     if(cnt==n/2)
-     {
-          int teams=0;
-          int teaml=0;
-
-          for(int i=0; i<cnt; i++)
-          {
-               if((i+1)==combinations[i]
-          }
-          for(int i=0; i<cnt; i++)
-          {
-               int row=combinations[i];
-               for(int j=0; j<cnt; j++)
-               {
-                    if(i==j) continue;
-                    int col=combinations[j];
-                    teams+=S[row]S[col];
-
-               }
-          }
-          return 0;
-     }
-
-     int now=start;
-     for(int i=start; ;i++)
-     {
-          int nn=now+1;
-          if(!visit[nn] && nn<=n)
-          {
-               dfs(nn, cnt++);
-
-          }
-     }
-     visit[start]=0;
-}
-
-
- int main()
- {
-
       cin >> n;
 
-      for(int i=1; i<=n; i++)
-           for(int j=1; j<=n; j++)
-                cin >> S[i][j];
+      for(int i=0; i<n; i++)
+           for(int j=0; j<n; j++){
+                if(s[j][i]==0) cin >> s[i][j];
+                else{
+                     int a;
+                     cin >> a;
+                     s[j][i]+=a;
+                }
+           }
 
-      int min=100000000;
-      for(int i=1; i<=n/2+1; i++)
-          dfs(i, 1);//시작위치, 현재 탐색 깊이
+     for(int i=0; i<=n/2; i++){
+          start[i]=true;
+          dfs(i, 1);
+          start[i]=false;
+     }
+     cout << mn;
+     return 0;
+}
 
-      cout << min;
+void dfs(int idx, int depth){
+     if(depth==n/2){
+          //능력치 계산
+          for(int i=0; i<n; i++){
+               if(start[i]) {
+                    for(int j=0; j<n; j++){
+                         if(start[j]) ss+=s[i][j];
+                    }
+               }
+               else{
+                    for(int j=0; j<n; j++){
+                         if(!start[j]) ls+=s[i][j];
+                    }
+               }
+          }
+          mn=min(mn, abs(ss, ls));
+          ss=0;
+          ls=0;
 
+          return;
+     }
+
+     for(int i=idx+1; i<n; i++){
+          start[i]=true;
+          dfs(i, depth+1);
+          start[i]=false;
+     }
+     return;
 }
