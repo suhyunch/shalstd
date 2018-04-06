@@ -271,7 +271,7 @@ void dfs(int dir, int depth){
      }
      store_map(depth);
      for(int i=0; i<4; i++){
-          if(depth<10){
+          if(depth<mn && depth<10){
                dfs(i, depth+1);
                load_map(depth);
           }
