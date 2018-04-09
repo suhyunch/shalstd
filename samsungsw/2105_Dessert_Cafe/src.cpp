@@ -18,30 +18,6 @@ void input(){
 
      return;
 }
-void dfs(int sy, int sx, int y, int x, int dir, int depth);
-int main(){
-     int tc;
-     cin >>tc;
-
-     for(int T=1; T<=tc; T++){
-          input();
-
-          mx=0;
-          for(int i=0; i<N-2; i++){
-               for(int j=1; j<N-1; j++){
-                    visited[map[i][j]]=1;
-                    dfs(i, j, i, j, 0, 1);
-                    visited[map[i][j]]=0;
-               }
-          }
-
-          if(mx==0) mx=-1;
-          cout << "#" <<T<< " " <<mx<<endl;
-     }
-     return 0;
-}
-
-
 
 void dfs(int sy, int sx, int y, int x, int dir, int depth){
      for(int i=dir; i<=dir+1; i++){
@@ -62,4 +38,26 @@ void dfs(int sy, int sx, int y, int x, int dir, int depth){
      }
 
      return;
+}
+
+int main(){
+     int tc;
+     cin >>tc;
+
+     for(int T=1; T<=tc; T++){
+          input();
+
+          mx=0;
+          for(int i=0; i<N-2; i++){
+               for(int j=1; j<N-1; j++){
+                    visited[map[i][j]]=1;
+                    dfs(i, j, i, j, 0, 1);
+                    visited[map[i][j]]=0;
+               }
+          }
+
+          if(mx==0) mx=-1;
+          cout << "#" <<T<< " " <<mx<<endl;
+     }
+     return 0;
 }
