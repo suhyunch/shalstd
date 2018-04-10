@@ -1,0 +1,20 @@
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s: Assembler messages:
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:48: Error: value of 000000095041dfc1 too large for field of 4 bytes at 0000000000000011
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:51: Error: value of 000000095041dfcc too large for field of 4 bytes at 000000000000001c
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:54: Error: value of 00000009503bc54d too large for field of 4 bytes at 000000000000002d
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:65: Error: value of 000000095041dffb too large for field of 4 bytes at 0000000000000057
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:82: Error: value of 00000009503bc5c3 too large for field of 4 bytes at 00000000000000a3
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:102: Error: value of 00000009503bc613 too large for field of 4 bytes at 00000000000000f3
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:107: Error: value of 00000009503bc62a too large for field of 4 bytes at 000000000000010a
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:116: Error: value of 00000009503bc64e too large for field of 4 bytes at 000000000000012e
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:158: Error: value of 000000095041e129 too large for field of 4 bytes at 0000000000000185
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:161: Error: value of 000000095041e140 too large for field of 4 bytes at 0000000000000198
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:164: Error: value of 000000095041e153 too large for field of 4 bytes at 00000000000001a7
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:167: Error: value of 000000095041e166 too large for field of 4 bytes at 00000000000001b6
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:171: Error: value of 000000095041e16c too large for field of 4 bytes at 00000000000001c4
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:173: Error: value of 000000095041e175 too large for field of 4 bytes at 00000000000001cd
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:270: Error: value of 000000095041e31f too large for field of 4 bytes at 0000000000000373
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:274: Error: value of 000000095041e335 too large for field of 4 bytes at 0000000000000385
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:277: Error: value of 00000009503bc8b6 too large for field of 4 bytes at 0000000000000396
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:315: Error: value of 000000095041e3b9 too large for field of 4 bytes at 0000000000000405
+C:\Users\õ����\AppData\Local\Temp\ccq6lWxo.s:339: Error: value of 000000095041e3e9 too large for field of 4 bytes at 0000000000000435

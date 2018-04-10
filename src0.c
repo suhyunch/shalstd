@@ -1,169 +1,288 @@
-#include <stdio.h>
+//https://www.acmicpc.net/problem/13460
+#include <iostream>
+using namespace std;
 
-void Push(int data, int * queue);
-void Pop(int * queue);
-void Size(int * queue);
-void Empty(int * queue);
-void Front(int * queue);
-void Back(int * queue);
-void Command(char * command, int * queue, int data);
-//문자열 비교
-int strcmp(const char* text1, const char* text2);
-int strcmp(const char* text1, const char* text2)
-{
-   int cmp = 0;
-   int i = 0;
-   while (text1[i])
-   {
-      if (*(text1 + i) == '\0')
-      {
-         if (*(text2 + i) == '\0')
-            return cmp;
-         else
-            return -1;
-      }
-      else
-      {
-         if (*(text2 + i) == '\0')
-            return -1;
-         else
-         {
-            if (*(text1 + i) == *(text2 + i))
-               cmp = 0;
-            else
-               return -1;
-         }
-      }
-      i++;
-   }
+#define UP 0
+#define DOWN 1
+#define LEFT 2
+#define RIGHT 3
+
+class ball{
+public:
+     int x;
+     int y;
+     bool input;
+};
+char map[10][10];
+char cache[11][10][10];
+int N, M;
+void solve(int dir, int cnt);
+void move(bool color, int dir);
+ball R;
+ball B;
+int mn=11;
+int chk_0=0;
+int main(){
+     cin >> N >> M;
+     R.input=0;
+     B.input=0;
+
+     for(int i=0; i<N; i++){
+          cin >> map[i];
+          if(R.input && B.input) continue;
+          for(int j=0; j<M; j++){
+               if(map[i][j]=='R'){
+                    R.y=i;
+                    R.x=j;
+                    R.input=true;
+               }
+               if(map[i][j]=='B'){
+                    B.y=i;
+                    B.x=j;
+                    B.input=true;
+               }
+          }
+     }
+
+
+     for(int i=0; i<4; i++){
+          chk_0=0;
+          solve(i, 0);
+          cout << mn <<"-------"<<endl<<endl;
+     }
+
+     if(mn==11) cout <<"-1";
+     else cout << mn;
 }
 
-int main(void)
-{
-   int tc = 0;
-   int queue[1000] = { 0, };
-   char input[6] = { 0, };
-   int output = 0;
-   char * command;
-   int data = 0;
+void solve(int dir, int cnt){//dir: 현재 기울이고 있는 방향 , cnt: 현재까지 기울인 횟수
+     if(cnt==11){
+          return;
+     }
+//현재 상태 캐시에 저장
+     for(int i=0; i<N; i++)
+          for(int j=0; j<M; j++)
+               cache[cnt][i][j]=map[i][j];
+//주의 할 것, R B가 구멍에 들어간 상태에서는 저장할 필요 x 시뮬레이션 진행하면서 공이 구멍에 들어갈 경우 return 해서 시뮬레이션 끝내기
+     chk_0=0;
+     if(dir==UP){
+          if(R.y < B.y){
+               move(1, dir);
+               move(0, dir);
+               //빨강공 이동 후 파랑공 이동
+          }
+          else{
+               move(0, dir);
+               move(1, dir);
+          }
+     }
+     else if(dir==DOWN){
+          if(R.y > B.y){
+               move(1, dir);
+               move(0, dir);
+               //빨강공 이동 후 파랑공 이동
+          }
+          else{
+               move(0, dir);
+               move(1, dir);
+          }
+     }
+     else if(dir==LEFT){
+          if(R.x < B.x){
+               move(1, dir);
+               move(0, dir);
+               //빨강공 이동 후 파랑공 이동
+          }
+          else{
+               move(0, dir);
+               move(1, dir);
+          }
+     }
+     else if(dir==RIGHT){
+          if(R.x > B.x){
+               move(1, dir);
+               move(0, dir);
+               //빨강공 이동 후 파랑공 이동
+          }
+          else{
+               move(0, dir);
+               move(1, dir);
+          }
+     }
 
-   command = input;
+          if(chk_0==1 && mn>cnt) {
+               mn=cnt;
+          //cout << chk_0 << "---------------" <<cnt <<"/"<<mn<<endl;
+          cout << cnt<<endl;
+          for(int i=0; i<N; i++){
+               for(int j=1; j<=cnt; j++)
+                    cout << cache[j][i] <<"   ";
+               cout <<endl;
+          }cout << endl;
+          }
+          chk_0=0;
 
-   scanf("%d", &tc);
-   for (int i = 0; i < tc; i++)
-   {
-      scanf("%s", command);
-      if(strcmp(command, "push") == 0)
-         scanf("%d", &data);
-      Command(command, queue, data);
-   }
-   return 0;
+
+//dfs로 다음 이동 정하기
+     for(int i=0; i<4; i++){
+          if(i==dir) continue;
+          solve(i, cnt+1);
+          //캐시에 있는 현재 이동 상태의 map 호출
+
+          for(int j=0; j<N; j++){
+               for(int k=0; k<M; k++){
+                    map[j][k]=cache[cnt][j][k];
+                    if(map[j][k]=='R') {
+                         R.y=j;
+                         R.x=k;
+                    }
+                    if(map[j][k]=='B'){
+                         B.y=j;
+                         B.x=k;
+                    }
+               }
+
+          }
+          chk_0=0;
+     }
+     for(int j=0; j<N; j++){
+          for(int k=0; k<M; k++){
+               map[j][k]=cache[cnt][j][k];
+               if(map[j][k]=='R') {
+                    R.y=j;
+                    R.x=k;
+               }
+               if(map[j][k]=='B'){
+                    B.y=j;
+                    B.x=k;
+               }
+          }
+
+     }
+     return;
 }
 
-void Command(char * command, int * queue, int data)
-{
-   char cmd[6][6] = {
-      { "push" },
-      { "pop" },
-      { "size" },
-      { "empty" },
-      { "front" },
-      { "back" } };
-   int function = 0;
-
-   for (int i = 0; i < 6; i++)
-   {
-      if (strcmp(command, cmd[i]) == 0)
-         function = i;
-   }
-   switch (function)
-   {
-   case 0 :
-      Push(data, queue);
-      break;
-   case 1:
-      Pop(queue);
-      break;
-   case 2:
-      Size(queue);
-      break;
-   case 3:
-      Empty(queue);
-      break;
-   case 4:
-      Front(queue);
-      break;
-   case 5:
-      Back(queue);
-      break;
-   default:
-      break;
-   }
-}
-
-void Push(int data, int * queue)
-{
-   int index = 0;
-   while (*(queue + index) != 0)
-      index++;
-   *(queue + index) = data;
-}
-
-void Pop(int * queue)
-{
-   int index = 0;
-
-   if (*(queue + index) != 0)
-      printf("%d\n", *(queue + index));
-   else
-      printf("%d\n", -1);
-   //큐 pop
-   *(queue + index) = 0;
-   index++;
-   //큐 정리
-   do
-   {
-      if (*(queue + index) != 0)
-      {
-         *(queue + (index - 1)) = *(queue + index);
-         *(queue + index) = 0;
-      }
-      index++;
-   } while (*(queue + index) != 0);
-}
-
-void Size(int * queue)
-{
-   int index = 0;
-   while (*(queue + index) != 0)
-      index++;
-   printf("%d\n", index);
-}
-
-void Empty(int * queue)
-{
-   int index = 0;
-   while (*(queue + index) != 0)
-      index++;
-   printf("%d\n", index > 0 ? 0 : 1);
-}
-
-void Front(int * queue)
-{
-   int index = 0;
-   if(*(queue + index) != 0)
-      printf("%d\n", *(queue + index));
-   else
-      printf("%d\n", -1);
-}
-
-void Back(int * queue)
-{
-   int index = 0;
-   while (*(queue + index) != 0)
-      index++;
-   if (index != 0)
-      printf("%d\n", *(queue + (index - 1)));
-   else
-      printf("%d\n", -1);
+void move(bool color, int dir){
+     //color 1 :: red, 0 :: blue,
+     if(dir==UP){
+          if(color){//현재 이동하는 공 색이 red
+               for(int i=R.y; i>0; i--){
+                    if(map[i-1][R.x] == 'O') {
+                         if(chk_0==0) chk_0=1;
+                         return;
+                    }
+                    if(map[i-1][R.x] != '.') { //이동불가_ #, B 일 때
+                         map[R.y][R.x] = '.';
+                         map[i][R.x] = 'R';
+                         R.y=i;
+                         return;
+                    }
+               }
+          }
+          else{
+               for(int i=B.y; i>0; i--){
+                    if(map[i-1][B.x] == 'O') {
+                         if(chk_0==0) chk_0=2;
+                         return;
+                    }
+                    if(map[i-1][B.x] != '.') {
+                         map[B.y][B.x] = '.';
+                         map[i][B.x] = 'B';
+                         B.y=i;
+                         return;
+                    }
+               }
+          }
+     }
+     if(dir==DOWN){
+          if(color){//현재 이동하는 공 색이 red
+               for(int i=R.y; i<N; i++){
+                    if(map[i+1][R.x] == 'O')  {
+                         if(chk_0==0) chk_0=1;
+                         return;
+                    }
+                    if(map[i+1][R.x] != '.') { //이동불가_ #, B 일 때
+                         map[R.y][R.x] = '.';
+                         map[i][R.x] = 'R';
+                         R.y=i;
+                         return;
+                    }
+               }
+          }
+          else{
+               for(int i=B.y; i<N; i++){
+                    if(map[i+1][B.x] == 'O') {
+                         if(chk_0==0) chk_0=2;
+                         return;
+                    }
+                    if(map[i+1][B.x] != '.') {
+                         map[B.y][B.x] = '.';
+                         map[i][B.x] = 'B';
+                         B.y=i;
+                         return;
+                    }
+               }
+          }
+     }
+     if(dir==LEFT){
+          if(color){//현재 이동하는 공 색이 red
+               for(int i=R.x; i>0; i--){
+                    if(map[R.y][i-1] == 'O')  {
+                         if(chk_0==0) chk_0=1;
+                         return;
+                    }
+                    if(map[R.y][i-1] != '.') { //이동불가_ #, B 일 때
+                         map[R.y][R.x] = '.';
+                         map[R.y][i] = 'R';
+                         R.x=i;
+                         return;
+                    }
+               }
+          }
+          else{
+               for(int i=B.x; i>0; i--){
+                    if(map[B.y][i-1] == 'O') {
+                         if(chk_0==0) chk_0=2;
+                         return;
+                    }
+                    if(map[B.y][i-1] != '.') { //이동불가_ #, B 일 때
+                         map[B.y][B.x] = '.';
+                         map[B.y][i] = 'B';
+                         B.x=i;
+                         return;
+                    }
+               }
+          }
+     }
+     if(dir==RIGHT){
+          if(color){//현재 이동하는 공 색이 red
+               for(int i=R.x; i<N; i++){
+                    if(map[R.y][i+1] == 'O')  {
+                         if(chk_0==0) chk_0=1;
+                         return;
+                    }
+                    if(map[R.y][i+1] != '.') { //이동불가_ #, B 일 때
+                         map[R.y][R.x] = '.';
+                         map[R.y][i] = 'R';
+                         R.x=i;
+                         return;
+                    }
+               }
+          }
+          else{
+               for(int i=B.x; i<N; i++){
+                    if(map[B.y][i+1] == 'O') {
+                         if(chk_0==0) chk_0=2;
+                         return;
+                    }
+                    if(map[B.y][i+1] != '.') { //이동불가_ #, B 일 때
+                         map[B.y][B.x] = '.';
+                         map[B.y][i] = 'B';
+                         B.x=i;
+                         return;
+                    }
+               }
+          }
+     }
+     return;
 }

@@ -1,0 +1,10 @@
+D:\std\SEA\3339\src.cpp: In function 'int main()':
+D:\std\SEA\3339\src.cpp:3:13: error: invalid operands of types '__gnu_cxx::__promote_2<int, int, double, double>::__type {aka double}' and 'int' to binary 'operator%'
+ #define mod 1000000007
+             ^
+D:\std\SEA\3339\src.cpp:13:27: note: in expansion of macro 'mod'
+         double x=pow(n,m)%mod;
+                           ^
+D:\std\SEA\3339\src.cpp:17:18: error: invalid operands of types 'double' and 'int' to binary 'operator%'
+             if(x%i ==0)
+                  ^
