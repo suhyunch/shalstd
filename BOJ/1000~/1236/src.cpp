@@ -1,17 +1,18 @@
 //https://www.acmicpc.net/problem/1236
 #include <iostream>
+#include <string>
 using namespace std;
 
-char map[51][51];
 int main(){
      bool chk[50][2]={0,};
      int n, m;
      cin >> n >> m;
 
      for(int i=0; i<n; ++i){
+         string s;
+         cin >> s;
           for(int j=0; j<m; ++j){
-               cin >> map[i][j];
-               if(map[i][j]=='X'){
+               if(s[j]=='X'){
                     chk[i][0]= true;
                     chk[j][1]= true;
                }
