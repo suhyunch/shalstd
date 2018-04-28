@@ -14,7 +14,6 @@ int main(){
           cin >> win[i];
      }
 
-     int mcnt=0;
      for(int i=1; i<5*m+1; i+=5){
           for(int j=1; j<5*n+1; j+=5){
                for(int w=i; w<i+4; w++){
