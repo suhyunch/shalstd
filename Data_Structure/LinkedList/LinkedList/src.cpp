@@ -1,7 +1,7 @@
 #include <iostream>
 #include "DLinkedList.h"
 using namespace std;
-/*
+/* 
 Dlinkedlist¿« ADT
 
 void ListInit(List *plist);

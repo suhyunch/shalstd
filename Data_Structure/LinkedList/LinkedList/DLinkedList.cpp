@@ -1,7 +1,7 @@
 #include <iostream>
 #include "DLinkedList.h"
 using namespace std;
-
+ 
 typedef int LData;
 /*
 struct _node {
