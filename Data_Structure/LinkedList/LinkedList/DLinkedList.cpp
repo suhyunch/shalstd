@@ -1,7 +1,7 @@
 #include <iostream>
 #include "DLinkedList.h"
 using namespace std;
- 
+
 typedef int LData;
 /*
 struct _node {
@@ -15,7 +15,7 @@ struct _linkedList {
 	Node * before;
 	int numOfData;
 	//int(*comp)(LData d1, LData d2);
-	//1. ¹«Á¶°Ç ¾ÕÀ¸·Î »ðÀÔÇÏ´Â ¸®½ºÆ®
+	//1. ë¬´ì¡°ê±´ ì•žìœ¼ë¡œ ì‚½ìž…í•˜ëŠ” ë¦¬ìŠ¤íŠ¸
 } List;
 
 */
@@ -38,7 +38,7 @@ bool LFirst(List *plist, LData *pdata) {
 
 	if (plist->head->next == NULL)
 		return false;
-	
+
 	plist->before = plist->head;
 	plist->cur = plist->head->next;
 
@@ -58,7 +58,7 @@ bool LNext(List *plist, LData *pdata) {
 }
 
 LData LRemove(List *plist) {
-	//curÀÌ °¡¸£Å°°í ÀÖ´Â ³ëµå »èÁ¦
+	//curì´ ê°€ë¥´í‚¤ê³  ìžˆëŠ” ë…¸ë“œ ì‚­ì œ
 	Node *rpos = plist->cur;
 	LData rdata = rpos->data;
 

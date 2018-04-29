@@ -1,6 +1,6 @@
 #ifndef __D_LINKED_LIST_H__
 #define __D_LINKED_LIST_H__
- 
+
 typedef int LData;
 
 typedef struct _node {
@@ -14,7 +14,7 @@ typedef struct _linkedList {
 	Node * before;
 	int numOfData;
 	//int(*comp)(LData d1, LData d2);
-	//1. ¹«Á¶°Ç ¾ÕÀ¸·Î »ðÀÔÇÏ´Â ¸®½ºÆ®
+	//1. ë¬´ì¡°ê±´ ì•žìœ¼ë¡œ ì‚½ìž…í•˜ëŠ” ë¦¬ìŠ¤íŠ¸
 } List;
 
 void ListInit(List *plist);

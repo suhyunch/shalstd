@@ -1,8 +1,8 @@
 #include <iostream>
 #include "DLinkedList.h"
 using namespace std;
-/* 
-DlinkedlistÀÇ ADT
+/*
+Dlinkedlistì˜ ADT
 
 void ListInit(List *plist);
 void LInsert(List *plist, LData data);
@@ -19,21 +19,21 @@ int main() {
 	ListInit(&list);
 
 	//main menu
-	
-	cout << "¸Ş´º¸¦ ¼±ÅÃÇÏ¼¼¿ä. \n";
+
+	cout << "ë©”ë‰´ë¥¼ ì„ íƒí•˜ì„¸ìš”. \n";
 	while (true) {
 		int menu;
-		cout << "1. µ¥ÀÌÅÍ »ğÀÔ\n";
-		cout << "2. ÀüÃ¼ µ¥ÀÌÅÍ ¼ö È®ÀÎ\n";
-		cout << "3. ÇöÀç List È®ÀÎ\n";
-		cout << "4. µ¥ÀÌÅÍ »èÁ¦\n";
-		cout << "5. Á¾·á\n";
+		cout << "1. ë°ì´í„° ì‚½ì…\n";
+		cout << "2. ì „ì²´ ë°ì´í„° ìˆ˜ í™•ì¸\n";
+		cout << "3. í˜„ì¬ List í™•ì¸\n";
+		cout << "4. ë°ì´í„° ì‚­ì œ\n";
+		cout << "5. ì¢…ë£Œ\n";
 		cin >> menu;
 
 		if (menu == 5) break;
 		switch (menu) {
 		case 1:
-			cout << "  µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ¼¼¿ä(0À» ´©¸£¸é µ¥ÀÌÅÍ ÀÔ·Â Á¾·á)\n";
+			cout << "  ë°ì´í„°ë¥¼ ì…ë ¥í•˜ì„¸ìš”(0ì„ ëˆ„ë¥´ë©´ ë°ì´í„° ì…ë ¥ ì¢…ë£Œ)\n";
 			while (true) {
 				int d;
 				cout << "\t";
@@ -43,12 +43,12 @@ int main() {
 			}
 			break;
 		case 2 :
-			cout << "ÀüÃ¼ µ¥ÀÌÅÍ ¼ö : " << LCount(&list) << '\n';
+			cout << "ì „ì²´ ë°ì´í„° ìˆ˜ : " << LCount(&list) << '\n';
 			break;
 		case 3:
 			if (LFirst(&list, &data)) {
 				cout << data << " ";
-				
+
 				while (LNext(&list, &data)) {
 					cout << data << " ";
 				}
@@ -57,7 +57,7 @@ int main() {
 			break;
 		case 4:
 			int d;
-			cout << "  »èÁ¦ÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ¼¼¿ä\n";
+			cout << "  ì‚­ì œí•  ë°ì´í„°ë¥¼ ì…ë ¥í•˜ì„¸ìš”\n";
 			cin >> d;
 			if(LFirst(&list, &data)){
 				if (data == d)
@@ -71,7 +71,7 @@ int main() {
 		}
 	}
 
-	
+
 
 
 	system("pause");
