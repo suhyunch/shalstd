@@ -7,7 +7,7 @@ using namespace std;
 void selsort(int arr[], int n, int sort) {
 	if (sort) {
 		//내림차순이라면
-		for (int i = 0; i < n ; i++) {
+		for (int i = 0; i < n-1 ; i++) {
 			int mxidx = i;
 			for (int j = i; j < n; j++) {
 				if (arr[mxidx] < arr[j]) mxidx = j;
@@ -18,7 +18,7 @@ void selsort(int arr[], int n, int sort) {
 		}
 	}
 	else {
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n-1; i++) {
 			int mnidx = i;
 			for (int j = i; j < n; j++) {
 				if (arr[mnidx] > arr[j]) mnidx = j;
