@@ -8,8 +8,8 @@ int input(int arr[], int idx) {
 	int n;
 	cin >> n;
 	arr[idx] = n;
-	int i = idx-1;
-	for (; i >= 0; i--) {
+
+	for (int i=idx-1; i >= 0; i--) {
 		if (n < arr[i]) {
 			arr[i + 1] = arr[i];
 			arr[i] = n;
@@ -19,9 +19,6 @@ int input(int arr[], int idx) {
 		}
 	}
 	idx++;
-	for (int i = 0; i < idx; i++)
-		cout << arr[i] << ' ';
-	cout << endl;
 	return idx;
 }
 
