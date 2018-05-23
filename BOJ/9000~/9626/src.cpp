@@ -1,7 +1,6 @@
 //https://www.acmicpc.net/problem/9626
 #include <iostream>
 using namespace std;
-char line[2]={'#','.'};
 char map[10][10];
 int main(){
      int m,n;
